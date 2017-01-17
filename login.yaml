@@ -1,0 +1,81 @@
+# For better review this API, please download the swagger editor or copyt this yml into swagger
+# online editor.
+
+swagger: '2.0'
+info:
+  title: Login API
+  description: Milieu Login API
+  version: "1.0.0"
+host: api.milieu.com
+basePath: /v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /login:
+    post:
+      summary: Social Media Account Login
+      description: |
+        The social media account login with facebook, google etc.
+      parameters:
+        - name: login
+          in: body
+          description: The social media account using for access APIs
+          schema:
+            $ref: '#/definitions/Login'
+          required: true
+      responses:
+        200:
+          description: The user session token
+          schema:
+            $ref: '#/definitions/User_Session_Token'
+        400:
+          description: Facebook token verification error
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: Unexpected server error
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  Login:
+    type: object
+    properties:
+      token:
+        type: string
+        format: jwt
+      provider:
+        type: string
+        format: facebook, google, twitter
+
+  User_Session_Token:
+    type: object
+    properties:
+      token:
+        type: string
+        format: jwt
+        description: Unique user sesion token in JWT format
+      expireTime:
+        type: string
+        format: epoch
+        description: The Epoch time that token will expire
+      otherUserInfo:
+        type: string
+        description: TDB
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+
+
