@@ -45,9 +45,9 @@ paths:
       summary: List Dev Sites
       description: List all dev sites
       parameters:
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
@@ -56,13 +56,13 @@ paths:
           schema:
             type: object
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
   /dev_sites/{dev_site_id}/comments:
     get:
@@ -75,9 +75,9 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
@@ -86,13 +86,13 @@ paths:
           schema:
             $ref: "#/definitions/Comment_List"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
     post:
       summary: Create a new comment in specific dev site
@@ -104,9 +104,9 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
         - name: comment
@@ -121,13 +121,13 @@ paths:
           schema:
             $ref: "#/definitions/Comment"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
   /dev_sites/{dev_site_id}/comments/{id}:
     get:
@@ -144,9 +144,9 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
@@ -155,15 +155,15 @@ paths:
           schema:
             $ref: "#/definitions/Comment"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
-    
+
     patch:
       summary: Update comment
       description: Update a specific comment
@@ -178,9 +178,9 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
@@ -189,13 +189,13 @@ paths:
           schema:
             $ref: "#/definitions/Comment"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
     put:
       summary: Update comment
@@ -211,9 +211,9 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
@@ -222,15 +222,15 @@ paths:
           schema:
             $ref: "#/definitions/Comment"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
-    
+
     delete:
       summary: Delete comment
       description: Delete a specific comment
@@ -245,22 +245,22 @@ paths:
           description: The ID of dev site
           type: integer
           required: true
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
       responses:
         204:
           description: Deleted
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
   /votes:
     post:
@@ -268,9 +268,9 @@ paths:
       description: |
         Create a vote in comment
       parameters:
-        - name: Authentication
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
         - name: vote
@@ -285,23 +285,23 @@ paths:
           schema:
             $ref: "#/definitions/Vote"
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
-      
+
   /votes/{id}:
     delete:
       summary: Delete a vote
       description: Delete a vote in comment
-      parameters: 
-        - name: Authentication
+      parameters:
+        - name: Authorization
           in: header
-          description: The authentication JWT returned from /login API
+          description: The Authorization JWT returned from /login API
           type: string
           required: true
         - name: id
@@ -313,13 +313,13 @@ paths:
         204:
           description: Deleted
         401:
-          description: Not authorized. The JWT is invalid/expired 
+          description: Not authorized. The JWT is invalid/expired
             or does not exist.
           schema:
             $ref: '#/definitions/Error'
         500:
           description: Unexpected server error
-          schema: 
+          schema:
             $ref: '#/definitions/Error'
 definitions:
   Login:
@@ -346,19 +346,19 @@ definitions:
       otherUserInfo:
         type: string
         description: TDB
-        
+
   Create_Comment:
     type: object
     properties:
       body:
         type: string
         description: The comment body
-        
+
   Comment_List:
     type: array
     items:
       $ref: "#/definitions/Comment"
-    
+
   Comment:
     properties:
       id:
@@ -407,7 +407,7 @@ definitions:
         type: integer
       up:
         type: boolean
-        
+
   Error:
     type: object
     properties:
@@ -416,6 +416,3 @@ definitions:
         format: int32
       description:
         type: string
-
-
-
