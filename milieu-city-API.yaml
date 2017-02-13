@@ -40,6 +40,22 @@ paths:
           description: Unexpected server error
           schema:
             $ref: '#/definitions/Error'
+  /user:
+    get:
+      summary: Get User information
+      description: Get user information
+      parameters:
+        - name: Authorization
+          in: header
+          description: The Authorization JWT returned from /login API
+          type: string
+          required: true
+      responses:
+        200:
+          description: user object
+          schema:
+            $ref: "#/definitions/User"
+
   /dev_sites:
     get:
       summary: List Dev Sites
@@ -331,6 +347,17 @@ definitions:
       provider:
         type: string
         format: facebook, google, twitter
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      email:
+        type: string
+      name:
+        type: string
+      uuid:
+        type: string
 
   User_Session_Token:
     type: object
