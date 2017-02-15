@@ -40,7 +40,7 @@ paths:
           description: Unexpected server error
           schema:
             $ref: '#/definitions/Error'
-  /user:
+  /users:
     get:
       summary: Get User information
       description: Get user information
@@ -300,6 +300,8 @@ paths:
           description: Created a Vote
           schema:
             $ref: "#/definitions/Vote"
+        204:
+          description: Un-voted this comment if the user has already voted it
         401:
           description: Not authorized. The JWT is invalid/expired
             or does not exist.
